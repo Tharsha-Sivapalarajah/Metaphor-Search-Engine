@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+    <style>
+        body {
+    background-color: #655f5f; /* Grey background */
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.text-center {
+    color: #333;
+}
+.card {
+    background-color: #f8f9fa;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+}
+.card-title {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+.form-control {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.btn-primary {
+    background-color: rgb(50,50,50);
+    border: 1px solid rgb(50,50,50);
+}
+.btn-primary:hover {
+    background-color: black; 
+    border: 1px solid black; 
+}
+h1 {
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.search-type{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-result {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    
+}
+.lead{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+    display: flex;
+}
+.important{
+    font-size: 27px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(9, 9, 117);
+    display: flex;
+}
+.title{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(9, 9, 117);
+}
+.meta-search {
+    list-style: none;
+    padding: 0;
+}
+.label{
+    color: rgb(50,50,50);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.result{
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <br>
+    <h1>Tamil Metaphor Search Engine</h1>
+    <hr>
+    <div class="row">
+        <aside class="col-md-6">
+            <p class="search-type">Simple Search</p>
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title mb-4 mt-1 text-center">Simple Search</h4>
+                    <form action="http://127.0.0.1:6997/search" method="post">
+                        <div class="form-group">
+                            <input name="searchTerm" class="form-control" placeholder="Type the words">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </aside>
+
+        <aside class="col-md-6">
+            <p class="search-type">Advanced Search</p>
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title mb-4 mt-1 text-center">Advanced Search</h4>
+                    <form action="http://127.0.0.1:6997/advanced_search" method="post">
+                        <div class="form-group">
+                            <input name="searchTerm2" class="form-control" placeholder="Type the words">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </aside>
+
+        <aside class="col-md-12 mt-4">
+            <p class="search-type">Filter Search</p>
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title mb-4 mt-1 text-center">Filter Search</h4>
+                    <form action="http://127.0.0.1:6997/filter_search" method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Poet Name</label>
+                                    <select class="form-control" name="Author">
+                                        <option value="none">None</option>
+                                        <option value="vairamuthu">வைரமுத்து</option>
+                                        <option value="vaali">வாலி</option>
+                                        <option value="damarai">தாமரை</option>
+                                        <option value="kabilan">கபிலன்</option>
+                                        <option value="kannathasan">கண்ணதாசன்</option>
+                                        <option value="viveka">விவேகா</option>
+                                        <option value="eknath">ஏக்நாத்</option>
+                                        <option value="samcs">சாம் சி எஸ</option>
+                                        <option value="mohanrajan">மோகன் ராஜன்</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Start Year</label>
+                                    <input type="text" class="form-control" name="start_year" id="start_year" value="1968" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>End Year</label>
+                                    <input type="text" class="form-control" name="end_year" id="end_year" value="2023" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </aside>
+        
+    </div>
+    {% if hits %}
+    <hgroup class="mb20">
+        <h1>Results Found</h1>
+        <h2 class="lead" id="results"> Search : <p class="important">{{ query }}</p></h2>
+        <h2 class="lead" id="results"> Results Count : <p class="important">{{ num_results }}</p></h2>
+        <h2 class="lead" id="results"> Time Taken : <p class="important">{{ time }}ms</p></h2>
+    </hgroup>
+    <section id='song_section' class="col-md-8">
+        {% for hit in hits %}
+        <article class="search-result row">
+            <div class="col-md-12">
+                <h3 class="title"><a>{{ hit._source["Poem"] }}</a></h3>
+                <ul class="meta-search">
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Poem:</span>
+                        <span class="result">{{ hit._source["Poem"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Poet:</span>
+                        <span class="result">{{ hit._source["Author"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Opening:</span>
+                        <span class="result">{{ hit._source["Poetic Opening"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Lines:</span>
+                        <span class="result">{{ hit._source["Lines"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Year:</span>
+                        <span class="result">{{ hit._source["Year"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Metaphor:</span>
+                        <span class="result">{{ hit._source["Metaphorical Name"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Interpretation:</span>
+                        <span class="result">{{ hit._source["Meaning"] }}</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-tags"></i> 
+                        <span class="label">Explanation: </span>
+                        <span class="result">{{ hit._source["Extra Notes"] }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6"></div>
+            <span class="clearfix borda"></span>
+        </article>
+        {% endfor %}
+    </section>
+    {% else %}
+    {% if init %}
+    <hgroup class="mb20">
+        <h2 class="lead">Enter the search query in the relevant search box</h2>
+    </hgroup>
+    {% else %}
+    <hgroup class="mb20">
+        <h1>Results Found</h1>
+        <h2 class="lead" id="results"> Search : <p class="important">{{ query }}</p></h2>
+        <h2 class="lead" id="results"> Results Count : <p class="important">0</p></h2>
+    </hgroup>
+    {% endif %}
+    {% endif %}
+</div>
+<!-- ... (Rest of the HTML) ... -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $("#start_year").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true //to close picker once year is selected
+    });
+    $("#end_year").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true //to close picker once year is selected
+    });
+</script>
+</body>
+</html>
